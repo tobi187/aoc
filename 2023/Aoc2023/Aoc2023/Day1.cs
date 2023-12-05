@@ -41,70 +41,39 @@ namespace Aoc2023
             Console.WriteLine(s);
         }
 
-            public void PartTwoNew()
+        public void PartTwoNew()
         {
             int s = 0;
             var f = File.ReadAllLines("in.txt");
             string[] nums = "one, two, three, four, five, six, seven, eight, nine".Split(", ");
+            string[] numsRev = nums.Select(x => string.Concat(x.Reverse())).ToArray();
             
             foreach (var l in f)
             {
-                int first = 0;
-                for (int i = 0; i <l.Length; i++)
+                string fi = "";
+                string la = "";
+                var revL = string.Concat(l.Reverse());
+                for (int i = 0; i < l.Length; i++)
                 {
-                    var b = false;
-                    try
-                    {
-                        if (char.IsNumber(l[i]))
-                        {
-                            first = int.Parse(l[i].ToString());
-                            break;
-                        }
-                        foreach (var a in nums)
-                        {
-                            if (l.StartsWith(a))
-                            {
-                                first = Array.IndexOf(nums, a) + 1;
-                                b = true;
-                                break;
-                            }    
-                        }
-                        if (b) break;
-                    } catch (Exception)
-                    {
-                        throw;
-                        continue;
-                    }
+                    if (fi == "" && char.IsNumber(l[i]))
+                        fi += l[i];
+                    
+                    if (la == "" && char.IsNumber(revL[i]))
+                        la += revL[i];
+                    
+                    foreach (var a in nums)
+                        if (fi == "" && l[i..].StartsWith(a))
+                            fi += (Array.IndexOf(nums, a) + 1).ToString();
+
+                    foreach (var a in numsRev)
+                        if (la == "" && revL[i..].StartsWith(a))
+                            la += (Array.IndexOf(numsRev, a) + 1).ToString();
+                    
+                    if (fi != "" && la != "")
+                        break;
                 }
-                int ll = 0;
-                for (int i = l.Length-1; i >= 0; i--)
-                {
-                    var b = false;
-                    try
-                    {
-                        if (char.IsNumber(l[i]))
-                        {
-                            ll = int.Parse(l[i].ToString());
-                            break;
-                        }
-                        foreach (var a in nums)
-                        {
-                            if (l.Substring(i - a.Length, a.Length) == a)
-                            {
-                                first = Array.IndexOf(nums, a) + 1;
-                                b = true;
-                                break;
-                            }
-                        }
-                        if (b) break;
-                    }
-                    catch (Exception)
-                    {
-                        //throw;
-                        continue;
-                    }
-                }
-                s += int.Parse($"{first}{ll}");
+
+                s += int.Parse($"{fi}{la}");
             }
             Console.WriteLine(s);
         }

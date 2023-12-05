@@ -44,7 +44,7 @@ let rec partTwo (f: string list) (n: int list) (r: int) =
         
         let newOne = 
             [
-                for i in 0..(Math.Max(tn.Length, nlnl.Length)-1) do
+                for i in 1..(Math.Max(tn.Length, nlnl.Length)-1) do
                     match List.tryItem i tn, List.tryItem i nlnl with
                     | Some x, Some y -> yield x + y
                     | Some x, _ -> yield x

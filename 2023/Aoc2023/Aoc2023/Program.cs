@@ -2,4 +2,4 @@
 
 var pr = new Day1();
 
-pr.PartTwoNewNew();
+pr.PartTwoNew();
