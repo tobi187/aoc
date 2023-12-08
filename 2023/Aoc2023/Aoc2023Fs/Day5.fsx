@@ -26,6 +26,7 @@ let seeds2 =
     |> List.chunkBySize 2
     |> List.map (fun [f;s] -> seq { f..(f+s-1L)  } |> Seq.toList )
     |> List.concat
+    |> List.distinct
 
 
 let maps = 
@@ -52,7 +53,7 @@ let translate (num: int64) (rl: Range list) =
 
     num + diff * int64 (sign (theOne.dest - theOne.source))
 
-seeds
+seeds2
 |> List.map (fun x -> List.fold (translate) x maps)
 |> List.min
 |> printfn "%A"
