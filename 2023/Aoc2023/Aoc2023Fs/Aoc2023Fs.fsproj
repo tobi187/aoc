@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Day13.fsx" />
+    <None Include="Day11.fsx" />
     <None Include="Day10.fsx" />
     <None Include="Day9.fsx" />
     <None Include="Day6.fsx" />
@@ -19,6 +21,8 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
 
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Aoc2023\Aoc2023.csproj" />
+  </ItemGroup>
 
 </Project>

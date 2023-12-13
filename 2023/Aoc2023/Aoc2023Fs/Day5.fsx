@@ -24,10 +24,12 @@ let seeds2 =
     |> Array.toList
     |> List.map (int64)
     |> List.chunkBySize 2
-    |> List.map (fun [f;s] -> seq { f..(f+s-1L)  } |> Seq.toList )
-    |> List.concat
-    |> List.distinct
+    |> List.map (fun a -> a[0], a[1])
+    |> List.map (fun (a, b) -> [0L..(b/100000L)..(b)] |> List.map (fun n -> n + a))
 
+let pSeed = [1778931867..10..(1778931867+1436999653-1)]
+    
+let ps2 = [pSeed[1589310]..pSeed[1589325]]
 
 let maps = 
     Array.tail file
@@ -53,7 +55,17 @@ let translate (num: int64) (rl: Range list) =
 
     num + diff * int64 (sign (theOne.dest - theOne.source))
 
+
 seeds2
+|> List.map (fun x -> List.map (fun y -> List.fold (translate) y maps) x)
+|> List.indexed
+|> List.minBy (fun (_, b) -> List.min b)
+|> (fun (a,b) -> a)
+
+pSeed
 |> List.map (fun x -> List.fold (translate) x maps)
-|> List.min
-|> printfn "%A"
+|> List.indexed
+|> List.sortBy (snd)
+|> List.take 5
+
+// 27389529 -> That's not the right answer; your answer is too high.

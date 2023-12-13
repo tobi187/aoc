@@ -23,7 +23,7 @@ namespace Aoc2023
                         (sx, sy) = (x, y);
 
             last = (sx, sy);
-            x = last.x + 1;
+            x = last.x - 1;
             y = last.y;
             while (!GotoNext()) 
                 steps++;
