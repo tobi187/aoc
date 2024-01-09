@@ -1,5 +1,5 @@
 ﻿using Aoc2023;
 
-var pr = new Day14();
+var pr = new Day4();
 
-pr.PartOne();
+pr.PartTwo();

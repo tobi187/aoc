@@ -1,7 +1,9 @@
 ﻿open System.IO
 open System
 
-let file = File.ReadAllLines "in.txt" |> Array.map (fun x -> x.Split(":")[1])
+let file = 
+    File.ReadAllLines "in.txt" 
+    |> Array.map (fun x -> x.Split(":")[1])
 
 let calcRes (line:string) = 
     let a = line.Split("|")
@@ -40,7 +42,7 @@ let rec partTwo (f: string list) (n: int list) (r: int) =
         let getAm = calcResPartTwo hd
         let tn = n.Tail
         let hn = n.Head
-        let nlnl = List.init getAm (fun i -> hn)
+        let nlnl = List.init getAm (fun _ -> hn)
         
         let newOne = 
             [
