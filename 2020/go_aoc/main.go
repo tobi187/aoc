@@ -1,5 +1,12 @@
 package main
 
+import "os"
+
 func main() {
-	Day1()
+	Day3P1()
+}
+
+func ReadFile() string {
+	dt, _ := os.ReadFile("in.txt")
+	return string(dt)
 }
