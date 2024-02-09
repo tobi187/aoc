@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="day12.fsx" />
+    <None Include="Day15.fsx" />
     <None Include="Day13.fsx" />
     <None Include="Day11.fsx" />
     <None Include="Day10.fsx" />

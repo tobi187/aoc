@@ -12,7 +12,10 @@ namespace Aoc2023
         public void PartOne()
         {
             for (int i = 0; i < 1_000_000_000; i++)
+            {
                 Rotate();
+                if (i% 100_000_000 == 0) Console.WriteLine(i);
+            }
             Calc();
         }
 
