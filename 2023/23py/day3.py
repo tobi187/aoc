@@ -41,7 +41,7 @@ def start():
                 else:
                     for ii in range(len(rr)):
                         if ss[ii] not in s:
-                            # r +=  int(rr[ii])
+                            # r += int(rr[ii])
                             s.add(ss[ii]) 
 
 
