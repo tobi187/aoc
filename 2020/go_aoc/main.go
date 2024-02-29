@@ -3,7 +3,7 @@ package main
 import "os"
 
 func main() {
-	Day3P1()
+	Day6()
 }
 
 func ReadFile() string {
